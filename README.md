@@ -33,3 +33,11 @@ If declaration and initialization are on the same line, Typescript will figure o
     
     => Type inference will not work anymore. `apples` has type `any`
 ```
+
+### Any Types
+
+- a type, just like "boolean, or string".
+
+- TS has NO idea what this is - CAN'T CHECK FOR CORRECT PROPERTY REFERENCES. 
+
+- AVOID VARIABLES WITH ANY TYPE AT ALL COST.
