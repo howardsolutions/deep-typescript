@@ -16,3 +16,20 @@ We developers tell TS the type.
 - Type Inference -> TS tries to FIGURE OUT what type of value a variable refers to.
 
 TS guesses the type for us.
+
+### Understanding Type Inference
+
+```js 
+    const color =             "blue"
+
+    Variable Declaration       Variable Initialization
+```
+
+If declaration and initialization are on the same line, Typescript will figure out the type of "Color" for us.
+
+```js 
+    let apples;
+    apples = 5
+    
+    => Type inference will not work anymore. `apples` has type `any`
+```
