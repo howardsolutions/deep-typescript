@@ -32,9 +32,14 @@ const logNumber = (i: number): void => {
     console.log(i);
 }
 
-// when to use annotations
+// when to use annotations and cant use type inference
 // 1) Function that returns 'any' type
 
 const json = '{"x": 10, "y": 20}';
-const coordinates = JSON.parse(json);
+const coordinates: { x: number, y: number } = JSON.parse(json);
 console.log(coordinates);
+
+// 2) Declared a variable first on one line, and defer to assign a value later.
+ 
+
+// 3) Variables whose type cannot be inferred correctly

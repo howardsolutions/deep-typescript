@@ -41,3 +41,14 @@ If declaration and initialization are on the same line, Typescript will figure o
 - TS has NO idea what this is - CAN'T CHECK FOR CORRECT PROPERTY REFERENCES. 
 
 - AVOID VARIABLES WITH ANY TYPE AT ALL COST.
+
+## 3. Annotations with Functions and Objects
+
+### Type annotations for functions
+
+Code we add to tell TS what type of arguments a function will receive and what type of values it will return.
+
+### Type inference for functions
+
+TS TRIES to figure out what type of value a function will RETURN
+
