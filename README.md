@@ -52,3 +52,20 @@ Code we add to tell TS what type of arguments a function will receive and what t
 
 TS TRIES to figure out what type of value a function will RETURN
 
+## 4. Typed Arrays
+
+Typed Arrays are arrays where each element is some consistent type of value.
+
+### Why do we care? 
+
+- TS can do type inference when extracting values from an array 
+
+- TS can prevent us from adding INCOMPATIBLE values to the array
+
+- We can get help with map, foreach, reduce functions
+
+- Flexible - arrays can still contain multiple different types
+
+### WHEN to use typed arrays?
+
+- Any time we need to represent a collection of records with some arbitrary sort order.
