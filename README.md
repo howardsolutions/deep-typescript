@@ -68,4 +68,12 @@ Typed Arrays are arrays where each element is some consistent type of value.
 
 ### WHEN to use typed arrays?
 
-- Any time we need to represent a collection of records with some arbitrary sort order.
+- Any time we need to represent a COLLECTION OF RECORD with some arbitrary sort order.
+
+
+## 5. Tuple
+
+- LOOK similar to array, array-like structure where each element represents SOME PROPERTY OF A RECORD.
+- The ORDER of type in tuple matter
+
+- Is feature in TS but we're not widely use.
