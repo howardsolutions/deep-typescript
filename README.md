@@ -77,3 +77,11 @@ Typed Arrays are arrays where each element is some consistent type of value.
 - The ORDER of type in tuple matter
 
 - Is feature in TS but we're not widely use.
+
+## 6. Interface
+
+- Interfaces + Classes  = HOW we get really strong code reuse in TS.
+
+### Interfaces 
+
+Creates a new type, describing the property NAMES and VALUES types of an object.
