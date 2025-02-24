@@ -85,3 +85,5 @@ Typed Arrays are arrays where each element is some consistent type of value.
 ### Interfaces 
 
 Creates a new type, describing the property NAMES and VALUES types of an object.
+
+We could use the SINGLE interface to describe the shape of multiple objects.
