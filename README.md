@@ -87,3 +87,9 @@ Typed Arrays are arrays where each element is some consistent type of value.
 Creates a new type, describing the property NAMES and VALUES types of an object.
 
 We could use the SINGLE interface to describe the shape of multiple objects.
+
+### General Strategy for REUSABLE code in TS
+
+- Create functions that accept ARGUMENTS that are TYPED with INTERFACES.
+
+- Objects / Classes can decide to IMPLEMENT a GIVEN interface to Work with a function.
