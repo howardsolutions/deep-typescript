@@ -93,3 +93,22 @@ We could use the SINGLE interface to describe the shape of multiple objects.
 - Create functions that accept ARGUMENTS that are TYPED with INTERFACES.
 
 - Objects / Classes can decide to IMPLEMENT a GIVEN interface to Work with a function.
+
+
+## 7. CLASSES
+
+Blueprint to Create an object with some fields (value) and methods (functions) to represent a THING.
+
+### Instance METHOD MODIFIER
+
+- Different methods are PUBLIC, PRIVATE, PROTECTED.
+
+THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variables.
+
+1. PUBLIC -> DEFAULT, This method can be called ANY WHERE, ANY TIME
+
+2. PRIVATE -> This method CAN only be called by OTHER methods in this class.
+
+3. PROTECTED -> This method CAN BE CALLED by OTHER METHODS IN THIS CLASS OR by other methods IN CHILD CLASSES.
+
+
