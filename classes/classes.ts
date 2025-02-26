@@ -1,7 +1,6 @@
 class Vehicle {
-    constructor() {
 
-    }
+    constructor(public color: string) { }
 
     protected drive(): void {
         console.log("I can drive")
@@ -10,16 +9,29 @@ class Vehicle {
     honk(): void {
         console.log("beep")
     }
-}
 
-class Car extends Vehicle {
-    protected drive(): void {
-        console.log("I can vroom")
+    static haha() {
+        console.log("haha from vehicle")
     }
 }
 
-const car = new Car();
+const vehicle = new Vehicle("orange")
 
-car.drive()
+
+class Car extends Vehicle {
+    constructor(color: string, public wheels: number) {
+        super(color);
+    }
+
+    protected drive(): void {
+        console.log("I can vroom")
+    }
+
+    // haha() {
+    //     console.log("haha from car")
+    // }
+}
+
+const car = new Car("red", 4);
 
 export { }; // This makes the file a module 
