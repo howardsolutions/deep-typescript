@@ -111,4 +111,8 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 
 3. PROTECTED -> This method CAN BE CALLED by OTHER METHODS IN THIS CLASS OR by other methods IN CHILD CLASSES.
 
+### Type Guards Notes
 
+- Use `typeof`: Narrow type of a value to a PRIMITIVE TYPE
+
+- Use `instanceof`: Narrow down every OTHER type of value that is created with a CONSTRUCTOR function.
