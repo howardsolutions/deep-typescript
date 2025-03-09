@@ -1,3 +1,6 @@
+/* 
+    Sortable: Instructions on how to be eligible for sorting
+*/
 interface Sortable {
     length: number;
     compare(leftIdx: number, rightIdx: number): boolean;
