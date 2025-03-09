@@ -1,7 +1,8 @@
-export class NumberCollection {
+import { Sorter } from "./sorter";
 
+export class NumberCollection extends Sorter {
     constructor(public data: number[]) {
-
+        super();
     }
 
     get length(): number {
@@ -17,5 +18,4 @@ export class NumberCollection {
         this.data[leftIdx] = this.data[rightIdx]
         this.data[rightIdx] = leftHand
     }
-
 }

@@ -123,3 +123,15 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 - Interface ONLY specify the PROPERTY Name and respective type of some classs or other object, interface doesn't make any claim that these methods will do correct things
 
 - Typescript can't guarentee those methods will do correct things all the time, it just can make sure these methods exist and have appropriate types 
+
+## Abstract Classes
+
+- CAN'T be used to CREATE an object DIRECTLY
+
+- ONLY used as a PARENT CLASS
+
+- Can contain REAL implementation for some methods.
+
+- The implemented methods can refer to other methods that don't actually exist yet (we still have to provide names and types for the un-implemented methods)
+
+- CAN make child classes promise to implement some other method.
