@@ -2,7 +2,7 @@
 
 Here is a repo where I put everything I learned about Typescript including terminology, design patterns.
 
-## 1. Why do we care about types 
+## 1. Why do we care about types
 
 - Types are used by Typescript Compiler to analyze our code for errors
 - Types allow other engineers to understand what VALUES are flowing around our codebase.
@@ -19,7 +19,7 @@ TS guesses the type for us.
 
 ### Understanding Type Inference
 
-```js 
+```js
     const color =             "blue"
 
     Variable Declaration       Variable Initialization
@@ -27,10 +27,10 @@ TS guesses the type for us.
 
 If declaration and initialization are on the same line, Typescript will figure out the type of "Color" for us.
 
-```js 
+```js
     let apples;
     apples = 5
-    
+
     => Type inference will not work anymore. `apples` has type `any`
 ```
 
@@ -38,7 +38,7 @@ If declaration and initialization are on the same line, Typescript will figure o
 
 - a type, just like "boolean, or string".
 
-- TS has NO idea what this is - CAN'T CHECK FOR CORRECT PROPERTY REFERENCES. 
+- TS has NO idea what this is - CAN'T CHECK FOR CORRECT PROPERTY REFERENCES.
 
 - AVOID VARIABLES WITH ANY TYPE AT ALL COST.
 
@@ -56,9 +56,9 @@ TS TRIES to figure out what type of value a function will RETURN
 
 Typed Arrays are arrays where each element is some consistent type of value.
 
-### Why do we care? 
+### Why do we care?
 
-- TS can do type inference when extracting values from an array 
+- TS can do type inference when extracting values from an array
 
 - TS can prevent us from adding INCOMPATIBLE values to the array
 
@@ -70,19 +70,19 @@ Typed Arrays are arrays where each element is some consistent type of value.
 
 - Any time we need to represent a COLLECTION OF RECORD with some arbitrary sort order.
 
-
 ## 5. Tuple
 
 - LOOK similar to array, array-like structure where each element represents SOME PROPERTY OF A RECORD.
+
 - The ORDER of type in tuple matter
 
 - Is feature in TS but we're not widely use.
 
 ## 6. Interface
 
-- Interfaces + Classes  = HOW we get really strong code reuse in TS.
+- Interfaces + Classes = HOW we get really strong code reuse in TS.
 
-### Interfaces 
+### Interfaces
 
 Creates a new type, describing the property NAMES and VALUES types of an object.
 
@@ -93,7 +93,6 @@ We could use the SINGLE interface to describe the shape of multiple objects.
 - Create functions that accept ARGUMENTS that are TYPED with INTERFACES.
 
 - Objects / Classes can decide to IMPLEMENT a GIVEN interface to Work with a function.
-
 
 ## 7. CLASSES
 
@@ -116,3 +115,11 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 - Use `typeof`: Narrow type of a value to a PRIMITIVE TYPE
 
 - Use `instanceof`: Narrow down every OTHER type of value that is created with a CONSTRUCTOR function.
+
+### More on design pattern notes.
+
+- Interfaces are useful NOT BECAUSE we can describe a type, IT'S BECAUSE we can SETUP a CONTRACT between ONE class and OTHER CLASS, hey if you're doing XYZ, imagine all functionality I gonna give you
+
+- Interface ONLY specify the PROPERTY Name and respective type of some classs or other object, interface doesn't make any claim that these methods will do correct things
+
+- Typescript can't guarentee those methods will do correct things all the time, it just can make sure these methods exist and have appropriate types 
