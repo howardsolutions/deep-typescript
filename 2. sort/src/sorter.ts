@@ -7,7 +7,11 @@ interface Sortable {
     swap(leftIdx: number, rightIdx: number): void
 }
 
-export class Sorter {
+export abstract class Sorter {
+    abstract compare(leftIdx: number, rightIdx: number): boolean;
+    abstract swap(leftIdx: number, rightIdx: number): void;
+    abstract length: number;
+
     sort(): void {
         const { length } = this;
 
