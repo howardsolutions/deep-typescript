@@ -135,3 +135,21 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 - The implemented methods can refer to other methods that don't actually exist yet (we still have to provide names and types for the un-implemented methods)
 
 - CAN make child classes promise to implement some other method.
+
+## INTERFACES vs ABSTRACT CLASSES
+
+### INTERFACES (ALWAYS PREFER FOR CODE REUSE)
+
+- Set up a CONTRACT between different classes.
+
+- Use when we have VERY different objects that we want to WORK together.
+
+- Promotes loose COUPLING
+
+### INHERITANCE / ABSTRACT CLASSES (Unless in a scenario where we have some differeent objects that are VERY CLOSED RELATED)
+
+- Set up a CONTRACT between different classes.
+
+- Use when we're trying to build up a definition of an OBJECT.
+
+- STRONGLY COUPLES CLASSES TOGETHER!!!!!!
