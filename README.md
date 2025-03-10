@@ -153,3 +153,13 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 - Use when we're trying to build up a definition of an OBJECT.
 
 - STRONGLY COUPLES CLASSES TOGETHER!!!!!!
+
+## Enums 
+
+- Follow near-identical syntax rules as normal objects
+
+- Creates an Object with the same keys and values when converted from TS to JS
+
+- Primary goal is to SIGNAL to other engineers that these are all closely related values.
+
+- Use whenever we have a small FIXED set of values that are all closely related and known at comile time.
