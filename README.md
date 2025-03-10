@@ -162,4 +162,4 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 
 - Primary goal is to SIGNAL to other engineers that these are all closely related values.
 
-- Use whenever we have a small FIXED set of values that are all closely related and known at comile time.
+- Use whenever we have a small FIXED set of values that are all closely related and known at compile time.
