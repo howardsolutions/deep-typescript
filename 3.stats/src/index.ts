@@ -1,5 +1,5 @@
 import { MatchResult } from './enums';
-import { MatchReader } from './MatchReader';
+import { MatchReader } from './inheritance abstract class/MatchReader';
 
 const csvFileReader = new MatchReader('football.csv');
 csvFileReader.read();

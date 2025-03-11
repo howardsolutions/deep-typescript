@@ -1,7 +1,9 @@
 import fs from "fs";
+import { MatchResult } from "./enums";
 
-export class CsvFileReader {
-    data: string[][] = []
+export abstract class CsvFileReader<T> {
+    data: T[] = []
+    abstract mapRow(row: string[]): T;
 
     constructor(public filename: string) { }
 
@@ -13,5 +15,6 @@ export class CsvFileReader {
             .map((row: string): string[] => {
                 return row.split(',');
             })
+            .map(this.mapRow)
     }
 }
