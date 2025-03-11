@@ -1,4 +1,4 @@
-# Typescript deep dive
+# Typescript Deep Dive
 
 Here is a repo where I put everything I learned about Typescript including terminology, design patterns.
 
@@ -163,3 +163,11 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 - Primary goal is to SIGNAL to other engineers that these are all closely related values.
 
 - Use whenever we have a small FIXED set of values that are all closely related and known at compile time.
+
+## GENERICS
+
+- Like function Arguments BUT for TYPES in class / function definitions.
+
+- Allow us to define the type of a property / argument / return value at a future point.
+
+- Used heavily when writing reusable code.
