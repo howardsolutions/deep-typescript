@@ -171,3 +171,14 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 - Allow us to define the type of a property / argument / return value at a future point.
 
 - Used heavily when writing reusable code.
+
+## INHERITANCE VS COMPOSITION
+
+### INHERITANCE
+- Characterized by an "IS A" relationship between 2 classes. 
+
+- Back to the example of the `3.stats` application, we have `class MatchReader` IS A `CsvFileReader` because `MatchReader` has all different methods and properties that normally belong to a CSV file reader as well.
+
+### COMPOSITION
+- Characterized by a "HAS A" relationship between 2 classes.
+- Example: `MatchReader` HAS A reference to some OUTSIDE object
