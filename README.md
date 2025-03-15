@@ -182,3 +182,39 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 ### COMPOSITION
 - Characterized by a "HAS A" relationship between 2 classes.
 - Example: `MatchReader` HAS A reference to some OUTSIDE object
+
+<hr />
+
+## Build Web Framework Notes
+
+### Framework Structure
+
+- MODEL CLASSES: Handle DATA, used to REPRESENT Users, Blog Posts, Images, etc.
+
+- VIEW CLASSES: Handle HTML and Events, caused by the User (like Clicks)
+
+### Extraction Approach 
+
+- Build Class `User` as a `MEGA` class with Tons of methods
+
+- Refactor User to use COMPOSITION 
+
+- Refactor Useer to be REUSABLE CLASS that can represent ANY piece of data not just a USER.
+
+### Inital User Class Field and Methods
+
+```typescript 
+   private data: UserProps        -> Object to store information about a particula user (name,age)
+
+   get(propName: string): (string | number)  -> Gets a SINGLE piece of info about this user(name, age)
+
+   set(update: UserProps): void   --> Changes information about this user (name, age)
+
+   on(eventName: string, callback: () => {})    --> Register an event handler with this object, so other parts of the app know when something CHANGES
+
+   trigger(eventName: string):void          --> trigger an event to tell other parts of the app that something has changed
+
+   fetch(): Promise                      ---> Fetches some data from server about a particular user
+
+   save(): Promise                    ---> Saves some data about this user to the server
+```
