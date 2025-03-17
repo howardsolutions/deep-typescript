@@ -6,10 +6,9 @@ interface UserProps {
 type Callback = () => void;
 
 export class User {
-  events: { [key: string]: Callback[] } = {}
+  events: { [key: string]: Callback[] } = {};
 
-
-  constructor(private data: UserProps) { }
+  constructor(private data: UserProps) {}
 
   get(propName: string): number | string {
     return this.data[propName];
@@ -21,19 +20,19 @@ export class User {
 
   on(eventName: string, callback: Callback): void {
     const handlers = this.events[eventName] || [];
-
-    handlers.push(callback)
-
-    this.events[eventName] = [...handlers];
+    handlers.push(callback);
+    this.events[eventName] = handlers;
   }
 
   trigger(eventName: string): void {
     const handlers = this.events[eventName];
 
-    if (!handlers || handlers.length == 0) {
-      return
+    if (!handlers || handlers.length === 0) {
+      return;
     }
 
-    handlers.forEach(callback => callback())
+    handlers.forEach(callback => {
+      callback();
+    });
   }
 }
