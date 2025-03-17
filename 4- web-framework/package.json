@@ -6,5 +6,8 @@
   "scripts": {
     "start:db": "json-server -w db.json",
     "start:parcel": "npx parcel index.html"
+  },
+  "devDependencies": {
+    "buffer": "^6.0.3"
   }
 }
