@@ -218,3 +218,9 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 
    save(): Promise                    ---> Saves some data about this user to the server
 ```
+
+### Serialize and Deserialize
+
+- Serialize: CONVERT DATA from an OBJECT into some saveable format (JSON)
+
+- Deserialize: Put data on object using some previous saved data (JSON)
