@@ -224,3 +224,9 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 - Serialize: CONVERT DATA from an OBJECT into some saveable format (JSON)
 
 - Deserialize: Put data on object using some previous saved data (JSON)
+
+### 2 important rules 
+
+1. In TS, STRINGS can be types
+
+2. In JS (TS), ALL OBJECTS KEYS are strings.
