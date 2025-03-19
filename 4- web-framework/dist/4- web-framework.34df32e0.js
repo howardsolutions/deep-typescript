@@ -664,12 +664,15 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"gH3Lb":[function(require,module,exports,__globalThis) {
 var _user = require("./models/User");
 const user = new (0, _user.User)({
-    id: 1
+    id: 1,
+    name: "newer name",
+    age: 20
 });
 user.on("change", ()=>{
     console.log(user);
 });
 user.fetch();
+user.save();
 
 },{"./models/User":"hjS3N"}],"hjS3N":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -702,6 +705,13 @@ class User {
         if (typeof id !== 'number') throw new Error("Cannot fetch without an id");
         this.sync.fetch(id).then((response)=>{
             this.set(response.data);
+        });
+    }
+    save() {
+        this.sync.save(this.attributes.getAll()).then((response)=>{
+            this.events.trigger("save");
+        }).catch(()=>{
+            this.events.trigger("error");
         });
     }
 }
@@ -5109,6 +5119,9 @@ class Attributes {
     }
     set(update) {
         Object.assign(this.data, update);
+    }
+    getAll() {
+        return this.data;
     }
 }
 
