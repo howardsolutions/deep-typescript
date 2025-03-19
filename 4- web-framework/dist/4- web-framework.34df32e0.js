@@ -664,11 +664,12 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"gH3Lb":[function(require,module,exports,__globalThis) {
 var _user = require("./models/User");
 const user = new (0, _user.User)({
-    name: "new record",
-    age: 0
+    id: 1
 });
-// console.log(user.get.call(user, "name"))
-console.log(user.get("name"));
+user.on("change", ()=>{
+    console.log(user);
+});
+user.fetch();
 
 },{"./models/User":"hjS3N"}],"hjS3N":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -692,6 +693,17 @@ class User {
     get get() {
         return this.attributes.get;
     }
+    set(update) {
+        this.attributes.set(update);
+        this.events.trigger('change');
+    }
+    fetch() {
+        const id = this.attributes.get("id");
+        if (typeof id !== 'number') throw new Error("Cannot fetch without an id");
+        this.sync.fetch(id).then((response)=>{
+            this.set(response.data);
+        });
+    }
 }
 
 },{"./Eventing":"eBJmf","./Sync":"f5dN4","./Attributes":"cDuwM","@parcel/transformer-js/src/esmodule-helpers.js":"8ZZvc"}],"eBJmf":[function(require,module,exports,__globalThis) {
@@ -699,20 +711,20 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Eventing", ()=>Eventing);
 class Eventing {
-    on(eventName, callback) {
-        const handlers = this.events[eventName] || [];
-        handlers.push(callback);
-        this.events[eventName] = handlers;
-    }
-    trigger(eventName) {
-        const handlers = this.events[eventName];
-        if (!handlers || handlers.length === 0) return;
-        handlers.forEach((callback)=>{
-            callback();
-        });
-    }
     constructor(){
         this.events = {};
+        this.on = (eventName, callback)=>{
+            const handlers = this.events[eventName] || [];
+            handlers.push(callback);
+            this.events[eventName] = handlers;
+        };
+        this.trigger = (eventName)=>{
+            const handlers = this.events[eventName];
+            if (!handlers || handlers.length === 0) return;
+            handlers.forEach((callback)=>{
+                callback();
+            });
+        };
     }
 }
 
