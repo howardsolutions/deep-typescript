@@ -1,9 +1,10 @@
-import { User } from './models/User';
 
-const user = User.buildUser({ id: 1, name: 'newer name', age: 0 });
+import { Collection } from './models/Collection';
 
-user.on('change', () => {
-  console.log(user);
-});
+const collection = new Collection('http://localhost:3000/users');
 
-user.fetch();
+collection.fetch()
+
+collection.on("change", () => {
+  console.log(collection)
+})
