@@ -8,6 +8,6 @@
     "start:parcel": "npx parcel index.html"
   },
   "devDependencies": {
-    "buffer": "^6.0.3"
+    "buffer": "^5.7.1"
   }
 }
