@@ -663,23 +663,24 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 
 },{}],"gH3Lb":[function(require,module,exports,__globalThis) {
 var _collection = require("./models/Collection");
-const collection = new (0, _collection.Collection)('http://localhost:3000/users');
-collection.fetch();
+var _user = require("./models/User");
+const collection = new (0, _collection.Collection)('http://localhost:3000/users', (json)=>(0, _user.User).buildUser(json));
 collection.on("change", ()=>{
     console.log(collection);
 });
+collection.fetch();
 
-},{"./models/Collection":"6CYqD"}],"6CYqD":[function(require,module,exports,__globalThis) {
+},{"./models/Collection":"6CYqD","./models/User":"hjS3N"}],"6CYqD":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Collection", ()=>Collection);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _eventing = require("./Eventing");
-var _user = require("./User");
 class Collection {
-    constructor(rootUrl){
+    constructor(rootUrl, deserialize){
         this.rootUrl = rootUrl;
+        this.deserialize = deserialize;
         this.models = [];
         this.events = new (0, _eventing.Eventing)();
     }
@@ -692,15 +693,14 @@ class Collection {
     fetch() {
         (0, _axiosDefault.default).get(this.rootUrl).then((response)=>{
             response.data.forEach((value)=>{
-                const user = (0, _user.User).buildUser(value);
-                this.models.push(user);
+                this.models.push(this.deserialize(value));
             });
         });
         this.trigger("change");
     }
 }
 
-},{"axios":"kooH4","./Eventing":"eBJmf","./User":"hjS3N","@parcel/transformer-js/src/esmodule-helpers.js":"8ZZvc"}],"kooH4":[function(require,module,exports,__globalThis) {
+},{"axios":"kooH4","./Eventing":"eBJmf","@parcel/transformer-js/src/esmodule-helpers.js":"8ZZvc"}],"kooH4":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _axiosJsDefault.default));
