@@ -199,7 +199,7 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 
 - Refactor User to use COMPOSITION 
 
-- Refactor Useer to be REUSABLE CLASS that can represent ANY piece of data not just a USER.
+- Refactor User to be REUSABLE CLASS that can represent ANY piece of data not just a USER.
 
 ### Inital User Class Field and Methods
 

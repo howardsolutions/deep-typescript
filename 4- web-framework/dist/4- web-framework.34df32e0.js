@@ -671,8 +671,9 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "UserForm", ()=>UserForm);
 class UserForm {
-    constructor(parent){
+    constructor(parent, model){
         this.parent = parent;
+        this.model = model;
     }
     eventsMap() {
         return {
