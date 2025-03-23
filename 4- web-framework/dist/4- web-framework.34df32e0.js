@@ -679,6 +679,7 @@ class UserForm {
             <div>
                 <h1>User Form</h1>
                 <input type="text" />
+                <button>Click me</button>
             </div>
         `;
     }
