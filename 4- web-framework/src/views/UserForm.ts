@@ -8,7 +8,9 @@ export class UserForm {
         }
     }
 
-    onButtonClick(): void { }
+    onButtonClick(): void {
+        console.log("CLICK")
+    }
 
     template(): string {
         return `
@@ -20,9 +22,24 @@ export class UserForm {
         `
     }
 
+    bindEvent(fragment: DocumentFragment) {
+        const eventMap = this.eventsMap();
+
+        for (let eventKey in eventMap) {
+            const [eventName, selector] = eventKey.split(":");
+
+            fragment.querySelectorAll(selector).forEach(element => {
+                element.addEventListener(eventName, eventMap[eventKey])
+            })
+        }
+    }
+
     render(): void {
         const templateElement = document.createElement("template");
         templateElement.innerHTML = this.template();
+
+        // bind events 
+        this.bindEvent(templateElement.content)
 
         this.parent.append(templateElement.content);
     }
