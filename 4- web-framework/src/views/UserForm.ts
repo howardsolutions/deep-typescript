@@ -3,7 +3,16 @@ import { User } from "../models/User"
 
 export class UserForm {
 
-    constructor(public parent: HTMLElement, public model: User) { }
+    constructor(public parent: HTMLElement, public model: User) {
+        this.bindModel()
+    }
+
+
+    bindModel(): void {
+        this.model.on("change", () => {
+            this.render();
+        })
+    }
 
     eventsMap(): { [key: string]: () => void } {
         return {
@@ -42,6 +51,8 @@ export class UserForm {
     }
 
     render(): void {
+        this.parent.innerHTML = '';
+
         const templateElement = document.createElement("template");
         templateElement.innerHTML = this.template();
 
