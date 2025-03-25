@@ -3,7 +3,7 @@ import { HasId, Model } from "../models/Model";
 export abstract class View<T extends Model<K>, K extends HasId> {
     regions: { [key: string]: Element } = {}
 
-    constructor(public parent: HTMLElement, public model: T) {
+    constructor(public parent: Element, public model: T) {
         this.bindModel()
     }
 
@@ -48,6 +48,10 @@ export abstract class View<T extends Model<K>, K extends HasId> {
         }
     }
 
+    onRender(): void {
+
+    }
+
     render(): void {
         this.parent.innerHTML = '';
 
@@ -57,8 +61,11 @@ export abstract class View<T extends Model<K>, K extends HasId> {
         // bind events 
         this.bindEvent(templateElement.content)
 
-        // map regions =>  place nested html
+        // map regions =>  place nested html structure
         this.mapRegions(templateElement.content)
+
+        // View nesting
+        this.onRender()
 
         this.parent.append(templateElement.content);
     }
