@@ -156,11 +156,11 @@
       });
     }
   }
-})({"aCx0K":[function(require,module,exports,__globalThis) {
+})({"4Pfp6":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 1234;
+var HMR_SERVER_PORT = 56333;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -4982,27 +4982,8 @@ class Model {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "UserForm", ()=>UserForm);
-class UserForm {
-    constructor(parent, model){
-        this.parent = parent;
-        this.model = model;
-        this.onSetAgeClick = ()=>{
-            this.model.setRandomAge();
-        };
-        this.onSetNameClick = ()=>{
-            const input = this.parent.querySelector("input");
-            const name = input?.value;
-            this.model.set({
-                name
-            });
-        };
-        this.bindModel();
-    }
-    bindModel() {
-        this.model.on("change", ()=>{
-            this.render();
-        });
-    }
+var _view = require("./View");
+class UserForm extends (0, _view.View) {
     eventsMap() {
         return {
             "click:.set-age": this.onSetAgeClick,
@@ -5021,11 +5002,39 @@ class UserForm {
             </div>
         `;
     }
+    constructor(...args){
+        super(...args), this.onSetAgeClick = ()=>{
+            this.model.setRandomAge();
+        }, this.onSetNameClick = ()=>{
+            const input = this.parent.querySelector("input");
+            const name = input?.value;
+            this.model.set({
+                name
+            });
+        };
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8ZZvc","./View":"dvzuG"}],"dvzuG":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "View", ()=>View);
+class View {
+    constructor(parent, model){
+        this.parent = parent;
+        this.model = model;
+        this.bindModel();
+    }
+    bindModel() {
+        this.model.on("change", ()=>{
+            this.render();
+        });
+    }
     bindEvent(fragment) {
         const eventMap = this.eventsMap();
         for(let eventKey in eventMap){
             const [eventName, selector] = eventKey.split(":");
-            fragment.querySelectorAll('.set-age').forEach((element)=>{
+            fragment.querySelectorAll(selector).forEach((element)=>{
                 element.addEventListener(eventName, eventMap[eventKey]);
             });
         }
@@ -5040,6 +5049,6 @@ class UserForm {
     }
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"8ZZvc"}]},["aCx0K","gH3Lb"], "gH3Lb", "parcelRequire94c2")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8ZZvc"}]},["4Pfp6","gH3Lb"], "gH3Lb", "parcelRequire94c2")
 
 //# sourceMappingURL=4- web-framework.34df32e0.js.map
