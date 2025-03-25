@@ -663,15 +663,15 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 
 },{}],"gH3Lb":[function(require,module,exports,__globalThis) {
 var _user = require("./models/User");
-var _userEdit = require("./views/UserEdit");
-const user = (0, _user.User).buildUser({
-    name: "NAMMEE",
-    age: 21
+var _userList = require("./views/UserList");
+const users = (0, _user.User).buildUserCollection();
+users.on("change", ()=>{
+    const root = document.getElementById("root");
+    if (root) new (0, _userList.UserList)(root, users).render();
 });
-const userForm = new (0, _userEdit.UserEdit)(document.getElementById("root"), user);
-userForm.render();
+users.fetch();
 
-},{"./models/User":"hjS3N","./views/UserEdit":"ePQl0"}],"hjS3N":[function(require,module,exports,__globalThis) {
+},{"./models/User":"hjS3N","./views/UserList":"6ot3o"}],"hjS3N":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "User", ()=>User);
@@ -4907,13 +4907,13 @@ class Collection {
     get trigger() {
         return this.events.trigger;
     }
-    fetch() {
-        (0, _axiosDefault.default).get(this.rootUrl).then((response)=>{
-            response.data.forEach((value)=>{
-                this.models.push(this.deserialize(value));
-            });
+    async fetch() {
+        const response = await (0, _axiosDefault.default).get(this.rootUrl);
+        response.data.forEach((value)=>{
+            this.models.push(this.deserialize(value));
         });
         this.trigger("change");
+        return response;
     }
 }
 
@@ -4978,69 +4978,56 @@ class Model {
     }
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"8ZZvc"}],"ePQl0":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8ZZvc"}],"6ot3o":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "UserEdit", ()=>UserEdit);
-var _userForm = require("./UserForm");
+parcelHelpers.export(exports, "UserList", ()=>UserList);
+var _collectionView = require("./CollectionView");
 var _userShow = require("./UserShow");
-var _view = require("./View");
-class UserEdit extends (0, _view.View) {
-    regionsMap() {
-        return {
-            userShow: ".user-show",
-            userForm: ".user-form"
-        };
-    }
-    onRender() {
-        new (0, _userShow.UserShow)(this.regions.userShow, this.model).render();
-        new (0, _userForm.UserForm)(this.regions.userForm, this.model).render();
-    }
-    template() {
-        return `
-            <div>
-                <div class="user-show"></div>
-                <div class="user-form"></div>
-            </div>   
-        `;
+class UserList extends (0, _collectionView.CollectionView) {
+    renderItem(model, itemParent) {
+        new (0, _userShow.UserShow)(itemParent, model).render();
     }
 }
 
-},{"./UserForm":"ebkXI","./UserShow":"apokD","./View":"dvzuG","@parcel/transformer-js/src/esmodule-helpers.js":"8ZZvc"}],"ebkXI":[function(require,module,exports,__globalThis) {
+},{"./CollectionView":"cm1dJ","./UserShow":"apokD","@parcel/transformer-js/src/esmodule-helpers.js":"8ZZvc"}],"cm1dJ":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "UserForm", ()=>UserForm);
+parcelHelpers.export(exports, "CollectionView", ()=>CollectionView);
+class CollectionView {
+    constructor(parent, collection){
+        this.parent = parent;
+        this.collection = collection;
+    }
+    render() {
+        this.parent.innerHTML = '';
+        const templateElement = document.createElement("template");
+        for (let model of this.collection.models){
+            const itemParent = document.createElement("div");
+            this.renderItem(model, itemParent);
+            templateElement.content.append(itemParent);
+        }
+        this.parent.append(templateElement.content);
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8ZZvc"}],"apokD":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "UserShow", ()=>UserShow);
 var _view = require("./View");
-class UserForm extends (0, _view.View) {
+class UserShow extends (0, _view.View) {
     eventsMap() {
-        return {
-            "click:.set-age": this.onSetAgeClick,
-            "click:.set-name": this.onSetNameClick,
-            "click:.save-model": this.onSaveClick
-        };
+        return {};
     }
     template() {
         return `
             <div>
-                <input type="text" placeholder="${this.model.get("name")}" />
-                <button class="set-name">Change Name</button>
-                <button class="set-age">Set RANDOM age</button>
-                <button class="save-model">Save User</button>
+                <h1>User Details</h1>
+                 <div>User Name: ${this.model.get("name")}</div>
+                <div>User Age: ${this.model.get("age")}</div>
             </div>
         `;
-    }
-    constructor(...args){
-        super(...args), this.onSaveClick = ()=>{
-            this.model.save();
-        }, this.onSetAgeClick = ()=>{
-            this.model.setRandomAge();
-        }, this.onSetNameClick = ()=>{
-            const input = this.parent.querySelector("input");
-            const name = input?.value;
-            this.model.set({
-                name
-            });
-        };
     }
 }
 
@@ -5098,26 +5085,6 @@ class View {
     }
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"8ZZvc"}],"apokD":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "UserShow", ()=>UserShow);
-var _view = require("./View");
-class UserShow extends (0, _view.View) {
-    eventsMap() {
-        return {};
-    }
-    template() {
-        return `
-            <div>
-                <h1>User Details</h1>
-                 <div>User Name: ${this.model.get("name")}</div>
-                <div>User Age: ${this.model.get("age")}</div>
-            </div>
-        `;
-    }
-}
-
-},{"./View":"dvzuG","@parcel/transformer-js/src/esmodule-helpers.js":"8ZZvc"}]},["aCx0K","gH3Lb"], "gH3Lb", "parcelRequire94c2")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8ZZvc"}]},["aCx0K","gH3Lb"], "gH3Lb", "parcelRequire94c2")
 
 //# sourceMappingURL=4- web-framework.34df32e0.js.map

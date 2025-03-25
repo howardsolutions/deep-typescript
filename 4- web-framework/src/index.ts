@@ -1,8 +1,14 @@
-import { User } from './models/User';
-import { UserEdit } from './views/UserEdit';
+import { User } from "./models/User";
+import { UserList } from "./views/UserList";
 
-const user = User.buildUser({ name: "NAMMEE", age: 21 })
+const users = User.buildUserCollection();
 
-const userForm = new UserEdit(document.getElementById("root")!, user)
+users.on("change", () => {
+    const root = document.getElementById("root");
 
-userForm.render()
+    if (root) {
+        new UserList(root, users).render()
+    }
+})
+
+users.fetch();
