@@ -230,3 +230,16 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 1. In TS, STRINGS can be types
 
 2. In JS (TS), ALL OBJECTS KEYS are strings.
+
+## Issues with Express + TS Integration
+
+### CONS 
+
+- Type definition files alone can't express what is going on in the JS world accurately (example: Middleware)
+
+- Type definition files provided to us aren't always accurate
+
+- Inputs (by type definition) to a server (or any program with external inputs) are not guaranteed to exist or be of the correct type.
+
+### PROS:
+- Addressing these type issues with Typescript can FORCE us to write better code.
