@@ -52,4 +52,9 @@ router.get("/", (req: Request, res: Response) => {
   }
 })
 
+router.post('/logout', (req: RequestWithBody, res: Response) => {
+  req.session = undefined;
+  res.redirect("/")
+});
+
 export { router };
