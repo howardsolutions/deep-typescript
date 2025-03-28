@@ -273,3 +273,10 @@ MUST get one of two OUTCOMES
 - 3rd arugment is the property descriptor 
 
 - Decorators are applied when the code for the class is ran NOT WHEN AN INSTANCE IS CREATED
+
+### Property Descriptor for Methods
+
+- `writable`: Whether or not this property can be changed.
+- `enumerable`: Whether or not this property get looped over by a "for ... in".
+- `value`: Current value.
+- `configurable`: Property definition can be changed and property can be deleted.
