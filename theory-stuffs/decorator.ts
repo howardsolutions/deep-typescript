@@ -1,6 +1,8 @@
 class Boat {
+    @testDecorator
     color: string = 'red';
 
+    @testDecorator
     get formattedColor(): string {
         return `This boats color is ${this.color}`
     }
@@ -25,6 +27,8 @@ function logError(errorMessage: string) {
         }
     }
 }
+
+const board = new Boat().pilot()
 
 function testDecorator(target: any, key: string): void {
     console.log('Target: ', target)
