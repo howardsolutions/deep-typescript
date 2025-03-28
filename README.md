@@ -243,3 +243,23 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 
 ### PROS:
 - Addressing these type issues with Typescript can FORCE us to write better code.
+
+## Massaging TS and Express to work better together will take a lot of TIME + EFFORT
+
+MUST get one of two OUTCOMES
+
+1) Get better type safety (help TS do better job of catching errors)
+
+2) Significantly enhance the DEVELOPER experience
+
+## DECORATORS IN TYPESCRIPT
+
+- Functions that can be used to MODIFY / CHANGE anything different properties / methods in the class.
+
+- Not the same as JS Decorators
+
+- Used inside / on CLASSES ONLY
+
+- Understanding the order in which decorators are ran are the key to understanding them.
+
+- EXPERIMENTAL
