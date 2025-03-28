@@ -263,3 +263,13 @@ MUST get one of two OUTCOMES
 - Understanding the order in which decorators are ran are the key to understanding them.
 
 - EXPERIMENTAL
+
+## Decorators on a Property, method, accessor (getter, setter)
+
+- First argument is the PROTOTYPE of the object
+
+- Second argument is the KEY of the property / method / accessor on the object 
+
+- 3rd arugment is the property descriptor 
+
+- Decorators are applied when the code for the class is ran NOT WHEN AN INSTANCE IS CREATED
