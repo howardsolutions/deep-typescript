@@ -122,7 +122,7 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 
 - Interface ONLY specify the PROPERTY Name and respective type of some classs or other object, interface doesn't make any claim that these methods will do correct things
 
-- Typescript can't guarentee those methods will do correct things all the time, it just can make sure these methods exist and have appropriate types 
+- Typescript can't guarentee those methods will do correct things all the time, it just can make sure these methods exist and have appropriate types
 
 ## Abstract Classes
 
@@ -154,7 +154,7 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 
 - STRONGLY COUPLES CLASSES TOGETHER!!!!!!
 
-## Enums 
+## Enums
 
 - Follow near-identical syntax rules as normal objects
 
@@ -175,11 +175,13 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 ## INHERITANCE VS COMPOSITION
 
 ### INHERITANCE
-- Characterized by an "IS A" relationship between 2 classes. 
+
+- Characterized by an "IS A" relationship between 2 classes.
 
 - Back to the example of the `3.stats` application, we have `class MatchReader` IS A `CsvFileReader` because `MatchReader` has all different methods and properties that normally belong to a CSV file reader as well.
 
 ### COMPOSITION
+
 - Characterized by a "HAS A" relationship between 2 classes.
 - Example: `MatchReader` HAS A reference to some OUTSIDE object
 
@@ -193,17 +195,17 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 
 - VIEW CLASSES: Handle HTML and Events, caused by the User (like Clicks)
 
-### Extraction Approach 
+### Extraction Approach
 
 - Build Class `User` as a `MEGA` class with Tons of methods
 
-- Refactor User to use COMPOSITION 
+- Refactor User to use COMPOSITION
 
 - Refactor User to be REUSABLE CLASS that can represent ANY piece of data not just a USER.
 
 ### Inital User Class Field and Methods
 
-```typescript 
+```typescript
    private data: UserProps        -> Object to store information about a particula user (name,age)
 
    get(propName: string): (string | number)  -> Gets a SINGLE piece of info about this user(name, age)
@@ -225,7 +227,7 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 
 - Deserialize: Put data on object using some previous saved data (JSON)
 
-### 2 important rules 
+### 2 important rules
 
 1. In TS, STRINGS can be types
 
@@ -233,7 +235,7 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 
 ## Issues with Express + TS Integration
 
-### CONS 
+### CONS
 
 - Type definition files alone can't express what is going on in the JS world accurately (example: Middleware)
 
@@ -242,19 +244,20 @@ THE GOAL of modifier: RESTRICT ACCESS TO different functions or different variab
 - Inputs (by type definition) to a server (or any program with external inputs) are not guaranteed to exist or be of the correct type.
 
 ### PROS:
+
 - Addressing these type issues with Typescript can FORCE us to write better code.
 
 ## Massaging TS and Express to work better together will take a lot of TIME + EFFORT
 
 MUST get one of two OUTCOMES
 
-1) Get better type safety (help TS do better job of catching errors)
+1. Get better type safety (help TS do better job of catching errors)
 
-2) Significantly enhance the DEVELOPER experience
+2. Significantly enhance the DEVELOPER experience
 
 ## DECORATORS IN TYPESCRIPT
 
-- Functions that can be used to MODIFY / CHANGE anything different properties / methods in the class.
+- Functions that can be used to MODIFY / CHANGE anything different properties / methods in the CLASS.
 
 - Not the same as JS Decorators
 
@@ -268,15 +271,19 @@ MUST get one of two OUTCOMES
 
 - First argument is the PROTOTYPE of the object
 
-- Second argument is the KEY of the property / method / accessor on the object 
+- Second argument is the KEY of the property / method / accessor on the object
 
-- 3rd arugment is the property descriptor 
+- 3rd arugment is the property descriptor
 
 - Decorators are applied when the code for the class is ran NOT WHEN AN INSTANCE IS CREATED
 
-### Property Descriptor for Methods
+### Property Descriptor for CLASS Methods
+
+- Property Descriptor is essentially an OBJECT that is meant to CONFIGURE A PROPERTY on another object.
 
 - `writable`: Whether or not this property can be changed.
 - `enumerable`: Whether or not this property get looped over by a "for ... in".
 - `value`: Current value.
 - `configurable`: Property definition can be changed and property can be deleted.
+
+- Methods use on descriptor `Object.getOwnPropertyDescriptor() and Object.defineProperty()`
