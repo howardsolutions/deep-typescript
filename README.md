@@ -287,3 +287,9 @@ MUST get one of two OUTCOMES
 - `configurable`: Property definition can be changed and property can be deleted.
 
 - Methods use on descriptor `Object.getOwnPropertyDescriptor() and Object.defineProperty()`
+
+### More notes on Decorators
+
+- Whenever we apply a DECORATOR to a CLASS itself => the custom function will get access to first argument of the FUNCTION CONSTRUCTOR 
+
+- As opposed, if we apply a decorator to CLASS METHOD , PROPERTY => First Argument will be the PROTOTYPE instead.
