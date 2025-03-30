@@ -1,4 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express';
+import { get } from './routes';
 
 @Controller('/')
 class LoginController {
