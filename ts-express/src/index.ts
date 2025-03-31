@@ -1,9 +1,10 @@
-import express, { Request, Response } from 'express';
-import { router } from './routes/loginRoutes';
 import bodyParser from 'body-parser';
 import cookieSession from 'cookie-session';
+import express from 'express';
+import { AppRouter } from './AppRouter';
 
 const app = express();
+const router = AppRouter.getInstance();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieSession({ keys: ["asdf"] }))

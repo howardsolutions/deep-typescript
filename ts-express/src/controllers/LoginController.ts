@@ -1,12 +1,12 @@
-import { Router, Request, Response, NextFunction } from 'express';
-import { get } from './routes';
-import { controller } from './controller';
+import { Request, Response } from 'express';
+import { controller, get } from './decorators';
+
 
 @controller('/auth')
 class LoginController {
-    @get("/login")
-    getLogin(req: Request, res: Response) {
-        res.send(`
+  @get("/login")
+  getLogin(req: Request, res: Response) {
+    res.send(`
               <form method="POST">
                 <div>
                   <label>Email</label>
@@ -20,5 +20,5 @@ class LoginController {
               </form>
             `);
 
-    }
+  }
 }
