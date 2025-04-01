@@ -13,7 +13,7 @@ function bodyValidators(keys: string): RequestHandler {
 
         for (let key of keys) {
             if (!req.body[key]) {
-                res.status(422).send("Invalid Request")
+                res.status(422).send(`Missing property ${key}`)
                 return;
             }
         }
@@ -40,7 +40,7 @@ export function controller(routePrefix: string) {
             // not every method in class might be a route handler.
             // only cheat them as route handler when it has a path associated with them
             if (path && method) {
-                router[method](`${routePrefix}${path}`, ...middlewares, routeHandler)
+                router[method](`${routePrefix}${path}`, ...middlewares, validator, routeHandler)
             }
         }
     }
