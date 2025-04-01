@@ -293,3 +293,8 @@ MUST get one of two OUTCOMES
 - Whenever we apply a DECORATOR to a CLASS itself => the custom function will get access to first argument of the FUNCTION CONSTRUCTOR 
 
 - As opposed, if we apply a decorator to CLASS METHOD , PROPERTY => First Argument will be the PROTOTYPE instead.
+
+
+REVIEW: DECORATOR IN FUNCTION ARGUMENTS AND CLASS FIELD (CONSTRUCTOR LEVEL)
+
+DIG DEEP: COMPOSITION VS INHERITANCE
