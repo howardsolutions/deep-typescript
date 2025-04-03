@@ -2,6 +2,8 @@ import bodyParser from 'body-parser';
 import cookieSession from 'cookie-session';
 import express from 'express';
 import { AppRouter } from './AppRouter';
+import "./controllers/LoginController";
+import "./controllers/RootController";
 
 const app = express();
 const router = AppRouter.getInstance();

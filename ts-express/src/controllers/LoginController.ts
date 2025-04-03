@@ -3,7 +3,7 @@ import { controller, get, post, bodyValidator } from './decorators';
 
 
 @controller('/auth')
-class LoginController {
+export class LoginController {
   @get("/login")
   getLogin(req: Request, res: Response) {
     res.send(`
