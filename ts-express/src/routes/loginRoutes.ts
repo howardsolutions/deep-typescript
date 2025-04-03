@@ -17,28 +17,6 @@ function requireAuth(req: Request, res: Response, next: NextFunction): void {
 
 const router = AppRouter.getInstance();
 
-router.get("/", (req: Request, res: Response) => {
-  if (req.session?.loggedIn) {
-    res.send(`
-        <div>
-          <div>You're logged in</div>
-          <a href="/logout">Logout</a>
-        </div>
-      `)
-  } else {
-    res.send(`
-      <div>
-        <div>You're NOT logged in</div>
-        <a href="/login">Login</a>
-      </div>
-    `)
-  }
-})
-
-router.post('/logout', (req: RequestWithBody, res: Response) => {
-  req.session = undefined;
-  res.redirect("/")
-});
 
 router.get("/protected", requireAuth, (req: Request, res: Response) => {
   res.send("Welcome to protected route, logged in user")
